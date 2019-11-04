@@ -1,8 +1,6 @@
 package com.github.ibogomolov.transfers.datamodel;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.*;
 import com.github.ibogomolov.transfers.datastore.Identifiable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -11,9 +9,13 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MoneyTransfer extends Identifiable {
+    @JsonSetter(nulls = Nulls.FAIL)
     private final Long fromAccountId;
+    @JsonSetter(nulls = Nulls.FAIL)
     private final Long toAccountId;
+    @JsonSetter(nulls = Nulls.FAIL)
     private final Double amount;
+    @JsonSetter(nulls = Nulls.FAIL)
     private final String message;
 
     @JsonCreator
